@@ -1,0 +1,58 @@
+/* Prova Bimestral de Banco de Dados 2 - 1° Bimestre
+
+=== 2ºA ===
+Arthur Gaspar Dizarro
+Gustavo Shohei Mizuta Novais 
+João Pedro de Souza Figueiredo 
+Paulo Emanuel Prado Dias Diniz */
+
+
+
+
+CREATE TABLE movies(
+  movie_way TEXT PRIMARY KEY, 
+  movie_title VARCHAR(35) NOT NULL,
+  duration TIMESTAMP NOT NULL,
+  release_date DATE NOT NULL,
+  main_artist VARCHAR[15] NOT NULL,
+  movie_director VARCHAR(40) REFERENCES actors_directors(name),
+  movie_poster BYTEA NOT NULL,
+  movie_genre VARCHAR(35) NOT NULL
+); 
+
+
+CREATE TABLE actors_directors(
+  code UUID PRIMARY KEY,
+  name VARCHAR(40) NOT NULL,
+  birth_date DATE NOT NULL,
+  deceased_date DATE,
+  type VARCHAR(20) NOT NULL,
+  biography TEXT NOT NULL,
+  most_famous_movie VARCHAR(35) REFERENCES movies(movie_title)
+);
+
+
+
+CREATE TABLE users(
+  code UUID PRIMARY KEY,
+  email VARCHAR(45) NOT NULL UNIQUE,
+  password VARCHAR(30) NOT NULL ,
+  name VARCHAR(40) NOT NULL,  
+  age INT NOT NULL,
+  favorites_genres TEXT,
+  create_date DATE NOT NULL,
+  last_access TIMESTAMP NOT NULL,
+  smartphone VARCHAR(15) NOT NULL,
+  plan VARCHAR(20) REFERENCES plans(name)
+);
+
+
+
+CREATE TABLE plans(
+  name VARCHAR(20) PRIMARY KEY,  
+  price MONEY NOT NULL,
+  recurrence TIMESTAMP NOT NULL,
+  description TEXT NOT NULL,
+  logged-in_devices INT NOT NULL
+);
+

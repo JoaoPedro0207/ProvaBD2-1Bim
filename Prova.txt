@@ -1,4 +1,4 @@
--- Prova Bimestral de Banco de Dados 2 - 1° Bimestre --
+/* Prova Bimestral de Banco de Dados 2 - 1° Bimestre
 
 === 2ºA ===
 Arthur Gaspar Dizarro
